@@ -20,10 +20,10 @@ Heapen har ingen bestämd storlek och det som lagras där är hela tiden tillgä
 ### 2. Vad är Value Types respektive Reference Types och vad skiljer dem åt?
 
 #### Value Types
-...
+En värdetyp lagras med sitt värde direkt i minnet. Om tex vi skapar variabeln int number = 10; så kommer plats i minnet skapas upp för variabeln "number" och dess värde "10". 
 
 #### Reference Types
-...
+En refenrenstyp lagras inte med sitt värde direkt i minnet, utan med en referens till en plats i minnet där värdet ligger.
 
 ### 3. Följande metoder (se bild nedan) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
 ![image](https://github.com/johnkallstrom/MemoryManagement/assets/54977209/ded6a599-9896-476e-83bc-d14a823d8d53)
