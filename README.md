@@ -20,31 +20,27 @@ Heapen har ingen bestämd storlek och det som lagras där är hela tiden tillgä
 ### 2. Vad är Value Types respektive Reference Types och vad skiljer dem åt?
 
 #### Value Types
-En värdetyp lagras med sitt värde direkt i minnet. Om tex vi skapar variabeln int number = 10; så kommer plats i minnet skapas upp för variabeln "number" och dess värde "10". 
+En värdetyp är en form av datatyp och innehåller värden som heltal, siffror med decimaltecken, sant eller falskt och bokstäver. 
+De lagras direkt i minnet där variabeln är deklarerad och tar oftast mindre plats i minnet jämfört med referenstyper. 
+De går att skapa egna värdetyper med hjälp av nyckelordet ```struct```.
 
-- bools
-- byte		
-- char		
-- decimal		
-- double
-- enum
-- float
+Exempel på värdetyper är:
 - int
-- long
-- sbyte
-- short
-- struct
-- uint
-- ulong
-- ushort
+- decimal
+- double
+- bool
+- char
+- enums
 
 #### Reference Types
-En refenrenstyp lagras inte med sitt värde direkt i minnet, utan med en referens till en plats i minnet där värdet ligger.
+En referenstyp är en annan form av datatyp som alltid lagras på heapen. 
+Till skillnad mot värdetyper, som lagrar värdet direkt i minnet där variabeln deklareras, så håller referenstyper istället en referens till en plats i minnet där värdet sparats.
 
+Exempel på referenstyper är:
 - class
 - interface
-- delegate
 - string
+- delegate
 
 ### 3. Följande metoder (se bild nedan) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
 ![image](https://github.com/johnkallstrom/MemoryManagement/assets/54977209/ded6a599-9896-476e-83bc-d14a823d8d53)
