@@ -45,3 +45,7 @@ Exempel på referenstyper är:
 ### 3. Följande metoder (se bild nedan) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
 ![image](https://github.com/johnkallstrom/MemoryManagement/assets/54977209/ded6a599-9896-476e-83bc-d14a823d8d53)
 
+Den första metoden returnerar 3 därför att när raden ```y = x``` körs så kopieras värdet ```3``` från ```x``` direkt över till ```y``` eftersom de är värdetyper. När sen variabeln ```y``` får ett nytt värde på nästa rad är det inget som påverkar ```x``` utan den behåller sitt ursprungsvärde vilket är ```3```.
+
+Anledningen till att den andra metoden returnerar 4 är för att när raden ```y = x``` körs så skriver objekt ```x``` över objekt ```y``` och nu pekar båda variablerna på samma objekt i minnet.
+Så när nästa rad ```y.MyValue = 4``` körs så får inte bara ```y.MyValue``` värdet ```4``` utan även ```x.MyValue``` får samma värde.
