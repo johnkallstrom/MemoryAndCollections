@@ -62,7 +62,7 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineList()
         {
-            /*
+			/*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch statement with cases '+' and '-'
              * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
@@ -72,12 +72,46 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
+			//List<string> theList = new List<string>();
+			//string input = Console.ReadLine();
+			//char nav = input[0];
+			//string value = input.substring(1);
 
-            //switch(nav){...}
+			//switch(nav){...}
+
+			var list = new List<string>();
+
+			while (true)
+            {
+                char character = ' ';
+				string? input = Console.ReadLine();
+                string value = string.Empty;
+
+				if (!string.IsNullOrWhiteSpace(input))
+				{
+					character = input[0];
+                    value = input.Substring(1);
+				}
+
+				switch (character)
+				{
+					case '+':
+                        list.Add(value);
+                        Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
+                        break;
+					case '-':
+                        list.Remove(value);
+						Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
+						break;
+					case '0':
+						Environment.Exit(0);
+						break;
+					default:
+						Console.WriteLine("Please enter som valid input (+, -)");
+						break;
+				}
+
+			}
         }
 
         /// <summary>
