@@ -95,6 +95,14 @@ namespace SkalProj_Datastrukturer_Minne
 
 				switch (character)
 				{
+                    // F: När ökar listans kapacitet?
+                    // S: Så fort antalet element i listan är lika mycket som kapaciteten och ett nytt element läggs till, då höjs kapaciteten
+
+                    // F: Med hur mycket ökar kapaciteten?
+                    // S: Det dubbla, så om kapaciteten är 4 och den ökar kommer den bli 8
+
+                    // F: Varför ökar inte listans kapacitet i samma takt som element läggs till?
+                    // S: 
 					case '+':
                         list.Add(value);
                         Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
