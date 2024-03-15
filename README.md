@@ -18,9 +18,7 @@ Heapen har ingen bestämd storlek och det som lagras där är hela tiden tillgä
 ![heap drawio](https://github.com/johnkallstrom/MemoryManagement/assets/54977209/09a18f79-e740-4e41-b190-32a3859b1147)
 
 ### 2. Vad är Value Types respektive Reference Types och vad skiljer dem åt?
-Svar:
 
 ### 3. Följande metoder (se bild nedan) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
 ![image](https://github.com/johnkallstrom/MemoryManagement/assets/54977209/ded6a599-9896-476e-83bc-d14a823d8d53)
 
-Svar:
