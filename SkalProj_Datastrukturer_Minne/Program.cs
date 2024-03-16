@@ -6,11 +6,11 @@ namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
-        /// <summary>
-        /// The main method, vill handle the menues for the program
-        /// </summary>
-        /// <param name="args"></param>
-        static void Main()
+		/// <summary>
+		/// The main method, vill handle the menues for the program
+		/// </summary>
+		/// <param name="args"></param>
+		static void Main()
         {
 
             while (true)
@@ -64,7 +64,7 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineList()
         {
-			/*
+            /*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch statement with cases '+' and '-'
              * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
@@ -74,18 +74,19 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-			//List<string> theList = new List<string>();
-			//string input = Console.ReadLine();
-			//char nav = input[0];
-			//string value = input.substring(1);
+            //List<string> theList = new List<string>();
+            //string input = Console.ReadLine();
+            //char nav = input[0];
+            //string value = input.substring(1);
 
-			//switch(nav){...}
+            //switch(nav){...}
 
+            Util.WriteMenu("Examine a List", ["Use (+) to add", "Use (-) to remove", "Enter (0) to exit program"]);
 			var list = new List<string>();
 
 			while (true)
             {
-                string[] input = GetInput();
+                string[] input = Util.GetInput();
                 char operation = char.Parse(input[0]);
                 string value = input[1];
 
@@ -115,17 +116,19 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineQueue()
         {
-            /*
+			/*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
 
-            var queue = new Queue<string>();
+
+            Util.WriteMenu("Examine a Queue", ["Use (+) to add", "Use (-) to remove", "Enter (0) to exit program"]);
+			var queue = new Queue<string>();
 
 			while (true)
             {
-                string[] input = GetInput();
+                string[] input = Util.GetInput();
                 char operation = char.Parse(input[0]);
                 string value = input[1];
 
@@ -169,11 +172,12 @@ namespace SkalProj_Datastrukturer_Minne
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
 
+			Util.WriteMenu("Examine a Stack", ["Use (+) to add", "Use (-) to remove", "Enter (1) to reverse a text","Enter (0) to exit program"]);
 			var stack = new Stack<string>();
 
 			while (true)
 			{
-				string[] input = GetInput();
+				string[] input = Util.GetInput();
 				char operation = char.Parse(input[0]);
 				string value = input[1];
 
@@ -196,6 +200,8 @@ namespace SkalProj_Datastrukturer_Minne
                             Console.WriteLine(ex.Message);
                         }
 						break;
+                    case '1':
+                        break;
 					case '0':
 						Environment.Exit(0);
 						break;
@@ -215,21 +221,6 @@ namespace SkalProj_Datastrukturer_Minne
              */
 
         }
-
-        static string[] GetInput()
-        {
-			char operation = ' ';
-			string value = string.Empty;
-
-			string? input = Console.ReadLine();
-			if (!string.IsNullOrWhiteSpace(input))
-			{
-				operation = input[0];
-				value = input.Substring(1);
-			}
-
-            return [operation.ToString(), value];
-		}
     }
 }
 
