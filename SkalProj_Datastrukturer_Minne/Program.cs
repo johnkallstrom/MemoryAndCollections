@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SkalProj_Datastrukturer_Minne
 {
@@ -84,14 +86,14 @@ namespace SkalProj_Datastrukturer_Minne
 			while (true)
             {
                 char character = ' ';
-				string? input = Console.ReadLine();
                 string value = string.Empty;
 
-				if (!string.IsNullOrWhiteSpace(input))
-				{
-					character = input[0];
+                string? input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    character = input[0];
                     value = input.Substring(1);
-				}
+                }
 
 				switch (character)
 				{
@@ -124,6 +126,48 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+
+            var queue = new Queue<string>();
+
+			while (true)
+            {
+				char character = ' ';
+				string nameToAdd = string.Empty;
+
+				string? input = Console.ReadLine();
+				if (!string.IsNullOrWhiteSpace(input))
+				{
+					character = input[0];
+					nameToAdd = input.Substring(1);
+				}
+
+                switch (character)
+				{
+					case '+':
+                        queue.Enqueue(nameToAdd);
+                        Console.WriteLine($"{nameToAdd} stands in queue");
+                        Console.WriteLine($"Queue count: {queue.Count}");
+                        break;
+					case '-':
+                        if (queue.Count > 0)
+                        {
+							string name = queue.Dequeue();
+							Console.WriteLine($"{name} leaves queue");
+							Console.WriteLine($"Queue count: {queue.Count}");
+						}
+                        else
+                        {
+                            Console.WriteLine("Queue is empty, nothing to remove");
+                        }
+						break;
+					case '0':
+						Environment.Exit(0);
+						break;
+					default:
+						Console.WriteLine("Please enter som valid input (+, -)");
+						break;
+				}
+			}
         }
 
         /// <summary>
@@ -147,7 +191,6 @@ namespace SkalProj_Datastrukturer_Minne
              */
 
         }
-
     }
 }
 
