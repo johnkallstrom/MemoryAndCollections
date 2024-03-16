@@ -85,15 +85,9 @@ namespace SkalProj_Datastrukturer_Minne
 
 			while (true)
             {
-                char character = ' ';
-                string value = string.Empty;
-
-                string? input = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(input))
-                {
-                    character = input[0];
-                    value = input.Substring(1);
-                }
+                string[] input = ReadInput();
+                char character = char.Parse(input[0]);
+                string value = input[1];
 
 				switch (character)
 				{
@@ -131,21 +125,15 @@ namespace SkalProj_Datastrukturer_Minne
 
 			while (true)
             {
-				char character = ' ';
-				string nameToAdd = string.Empty;
-
-				string? input = Console.ReadLine();
-				if (!string.IsNullOrWhiteSpace(input))
-				{
-					character = input[0];
-					nameToAdd = input.Substring(1);
-				}
+                string[] input = ReadInput();
+                char character = char.Parse(input[0]);
+                string value = input[1];
 
                 switch (character)
 				{
 					case '+':
-                        queue.Enqueue(nameToAdd);
-                        Console.WriteLine($"{nameToAdd} stands in queue");
+                        queue.Enqueue(value);
+                        Console.WriteLine($"{value} stands in queue");
                         Console.WriteLine($"Queue count: {queue.Count}");
                         break;
 					case '-':
@@ -191,6 +179,21 @@ namespace SkalProj_Datastrukturer_Minne
              */
 
         }
+
+        static string[] ReadInput()
+        {
+			char character = ' ';
+			string value = string.Empty;
+
+			string? input = Console.ReadLine();
+			if (!string.IsNullOrWhiteSpace(input))
+			{
+				character = input[0];
+				value = input.Substring(1);
+			}
+
+            return [character.ToString(), value];
+		}
     }
 }
 
