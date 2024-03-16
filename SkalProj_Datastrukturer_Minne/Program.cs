@@ -85,20 +85,21 @@ namespace SkalProj_Datastrukturer_Minne
 
 			while (true)
             {
-                string[] input = ReadInput();
-                char character = char.Parse(input[0]);
+                string[] input = GetInput();
+                char operation = char.Parse(input[0]);
                 string value = input[1];
 
-				switch (character)
+				switch (operation)
 				{
 					case '+':
                         list.Add(value);
                         Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
                         break;
 					case '-':
-                        list.Remove(value);
-						Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
-						break;
+                        bool succeeded = list.Remove(value);
+                        if (succeeded) Console.WriteLine($"Capacity: {list.Capacity}\nCount: {list.Count}");
+                        else Console.WriteLine("List empty.");
+                        break;
 					case '0':
 						Environment.Exit(0);
 						break;
@@ -106,7 +107,6 @@ namespace SkalProj_Datastrukturer_Minne
 						Console.WriteLine("Please enter som valid input (+, -)");
 						break;
 				}
-
 			}
         }
 
@@ -125,11 +125,11 @@ namespace SkalProj_Datastrukturer_Minne
 
 			while (true)
             {
-                string[] input = ReadInput();
-                char character = char.Parse(input[0]);
+                string[] input = GetInput();
+                char operation = char.Parse(input[0]);
                 string value = input[1];
 
-                switch (character)
+                switch (operation)
 				{
 					case '+':
                         queue.Enqueue(value);
@@ -137,15 +137,15 @@ namespace SkalProj_Datastrukturer_Minne
                         Console.WriteLine($"Queue count: {queue.Count}");
                         break;
 					case '-':
-                        if (queue.Count > 0)
+                        try
                         {
 							string name = queue.Dequeue();
 							Console.WriteLine($"{name} leaves queue");
 							Console.WriteLine($"Queue count: {queue.Count}");
 						}
-                        else
+                        catch (InvalidOperationException ex)
                         {
-                            Console.WriteLine("Queue is empty, nothing to remove");
+                            Console.WriteLine(ex.Message);
                         }
 						break;
 					case '0':
@@ -163,12 +163,48 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineStack()
         {
-            /*
+			/*
              * Loop this method until the user inputs something to exit to main menue.
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
-        }
+
+			var stack = new Stack<string>();
+
+			while (true)
+			{
+				string[] input = GetInput();
+				char operation = char.Parse(input[0]);
+				string value = input[1];
+
+				switch (operation)
+				{
+					case '+':
+						stack.Push(value);
+						Console.WriteLine($"{value} stands in queue");
+						Console.WriteLine($"Stack count: {stack.Count}");
+						break;
+					case '-':
+                        try
+                        {
+							string name = stack.Pop();
+							Console.WriteLine($"{name} leaves queue");
+							Console.WriteLine($"Stack count: {stack.Count}");
+						}
+                        catch (InvalidOperationException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+						break;
+					case '0':
+						Environment.Exit(0);
+						break;
+					default:
+						Console.WriteLine("Please enter som valid input (+, -)");
+						break;
+				}
+			}
+		}
 
         static void CheckParanthesis()
         {
@@ -180,19 +216,19 @@ namespace SkalProj_Datastrukturer_Minne
 
         }
 
-        static string[] ReadInput()
+        static string[] GetInput()
         {
-			char character = ' ';
+			char operation = ' ';
 			string value = string.Empty;
 
 			string? input = Console.ReadLine();
 			if (!string.IsNullOrWhiteSpace(input))
 			{
-				character = input[0];
+				operation = input[0];
 				value = input.Substring(1);
 			}
 
-            return [character.ToString(), value];
+            return [operation.ToString(), value];
 		}
     }
 }
