@@ -49,3 +49,29 @@ Den första metoden returnerar 3 därför att när raden ```y = x``` körs så k
 
 Anledningen till att den andra metoden returnerar 4 är för att när raden ```y = x``` körs så skriver objekt ```x``` över objekt ```y``` och nu pekar båda variablerna på samma objekt i minnet.
 Så när nästa rad ```y.MyValue = 4``` körs så får inte bara ```y.MyValue``` värdet ```4``` utan även ```x.MyValue``` får samma värde.
+
+### Övning 1: ExamineList()
+
+#### 1. Skriv klart implementationen av ExamineList-metoden så att undersökningen blir genomförbar.
+#### 2. När ökar listans kapacitet? (Alltså den underliggande arrayens storlek)
+Så fort kapaciteten är uppnådd och ett nytt element ska läggas till, dvs när antalet element i listan är lika mycket som kapaciteten
+
+#### 3. Med hur mycket ökar kapaciteten?
+Den dubbleras. Så om kapaciteten i listan är 4 så ökar den till 8. 
+
+#### 4. Varför ökar inte listans kapacitet i samma takt som element läggs till?
+För det är så man valt att implementera list-klassen.
+Koden är skriven på ett sånt sätt så att kapaciteten kommer inte öka efter varje nytt element läggs till utan bara när den är uppnådd. 
+
+#### 5. Minskar kapaciteten när element tas bort ur listan?
+Nej, det gör den inte.
+
+#### 6. När är det då fördelaktigt att använda en egendefinierad array istället för en lista?
+När man vill ha ett bestämt antal element i sin kollektion/array/lista eller när man bara vill ha bättre kontroll över kapaciteten, när den ska öka, med hur mycket m.m. 
+
+### Övning 2: ExamineQueue()
+
+### Övning 3: ExamineStack()
+#### 1. Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det inte så smart att använda en stack i det här fallet?
+
+### Övning 4: CheckParenthesis()
