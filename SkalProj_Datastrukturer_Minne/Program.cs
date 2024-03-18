@@ -81,6 +81,7 @@ namespace SkalProj_Datastrukturer_Minne
 
             //switch(nav){...}
 
+            Util.Clear();
             Util.WriteMenu("Examine a List", ["Use (+) to add", "Use (-) to remove", "Enter (0) to exit program"]);
 			var list = new List<string>();
 
@@ -116,13 +117,13 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineQueue()
         {
-			/*
+            /*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
 
-
+            Util.Clear();
             Util.WriteMenu("Examine a Queue", ["Use (+) to add", "Use (-) to remove", "Enter (0) to exit program"]);
 			var queue = new Queue<string>();
 
@@ -166,12 +167,13 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineStack()
         {
-			/*
+            /*
              * Loop this method until the user inputs something to exit to main menue.
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
 
+            Util.Clear();
 			Util.WriteMenu("Examine a Stack", ["Use (+) to add", "Use (-) to remove", "Enter (1) to reverse a text","Enter (0) to exit program"]);
 			var stack = new Stack<string>();
 
@@ -239,40 +241,27 @@ namespace SkalProj_Datastrukturer_Minne
 				new Parenthesis(ParenthesisType.Angle, opening: false, '>'),
 			};
 
+            Util.Clear();
+            Console.WriteLine("Check parenthesis");
+
 			while (true)
             {
                 Console.Write("Enter text: ");
                 string? text = Console.ReadLine();
 
-				var matches = new List<Parenthesis>();
-
 				if (!string.IsNullOrWhiteSpace(text))
                 {
-					parenthesis.ForEach(p =>
+                    var letters = text.ToCharList();
+					var matches = new List<Parenthesis>();
+					foreach (var letter in letters)
                     {
-                        foreach (var letter in text)
+                        var match = parenthesis.FirstOrDefault(p => letter.Equals(p.Symbol));
+                        if (match is not null)
                         {
-                            if (letter.Equals(p.Symbol))
-                            {
-                                matches.Add(p);
-                            }
+                            matches.Add(match);
                         }
-                    });
+                    }
 				}
-
-                for (int i = 0; i <= matches.Count; i++)
-                {
-                    var current = matches[i];
-
-                    Parenthesis? next = null;
-                    if (i + 1 <= matches.Count)
-                    {
-						next = matches[i + 1];
-					}
-
-                    Console.WriteLine($"C: {current.Type}, {current.Symbol}, Opening: {current.Opening}");
-                    Console.WriteLine($"N: {next.Type}, {next.Symbol}, Opening: {next.Opening}");
-                }
 			}
         }
     }
