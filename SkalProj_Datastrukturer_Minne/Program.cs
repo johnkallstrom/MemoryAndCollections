@@ -229,19 +229,19 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
-			var parenthesis = new List<Parenthesis>
-			{
-				new Parenthesis(ParenthesisType.Bracket, '(', true, false),
-				new Parenthesis(ParenthesisType.Bracket, ')', false, true),
-				new Parenthesis(ParenthesisType.Square, '[', true, false),
-				new Parenthesis(ParenthesisType.Square, ']', false, true),
-				new Parenthesis(ParenthesisType.Curly, '{', true, false),
-				new Parenthesis(ParenthesisType.Curly, '}', false, true),
-				new Parenthesis(ParenthesisType.Angle, '<', true, false),
-				new Parenthesis(ParenthesisType.Angle, '>', false, true),
-			};
+		    var parenthesis = new List<Parenthesis>
+		    {
+			    new Parenthesis(ParenthesisType.Bracket, '(', isClosing: false),
+			    new Parenthesis(ParenthesisType.Bracket, ')', isClosing: true),
+			    new Parenthesis(ParenthesisType.Square, '[', isClosing: false),
+			    new Parenthesis(ParenthesisType.Square, ']', isClosing: true),
+			    new Parenthesis(ParenthesisType.Curly, '{', isClosing: false),
+			    new Parenthesis(ParenthesisType.Curly, '}', isClosing: true),
+			    new Parenthesis(ParenthesisType.Angle, '<', isClosing: false),
+			    new Parenthesis(ParenthesisType.Angle, '>', isClosing: true),
+		    };
 
-            Util.Clear();
+		    Util.Clear();
             Console.WriteLine("Check parenthesis");
 
 			while (true)
@@ -251,51 +251,35 @@ namespace SkalProj_Datastrukturer_Minne
 
 				if (!string.IsNullOrWhiteSpace(text))
                 {
-                    var letters = text.ToCharList();
-                    var matches = new List<Parenthesis>();
-                    foreach (var letter in letters)
+					var stack = new Stack<Parenthesis>();
+
+					foreach (var character in text.ToCharArray())
+					{
+						var p = parenthesis.FirstOrDefault(p => character.Equals(p.Symbol));
+						if (p is not null)
+						{
+							if (p.IsClosing)
+							{
+								var top = stack.Peek();
+								if (p.Type.Equals(top.Type))
+								{
+									stack.Pop();
+								}
+							}
+							else
+							{
+								stack.Push(p);
+							}
+						}
+					}
+
+					if (stack.Count > 0)
                     {
-                        var match = parenthesis.FirstOrDefault(p => letter.Equals(p.Symbol));
-                        if (match is not null)
-                        {
-                            matches.Add(match);
-                        }
-                    }
-
-                    bool valid = false;
-                    Parenthesis? current = null;
-                    Parenthesis? next = null;
-                    for (int i = 0; i < matches.Count; i++)
-                    {
-                        // Set current and next parenthesis
-                        current = matches[i];
-                        if (i + 1 < matches.Count) next = matches[i + 1];
-
-                        // Check if the current parenthesis is opening and next is not null
-                        if (current.IsOpening && next is not null)
-                        {
-                            // Check if current parenthesis type is equal to the next and if next is closing
-                            if (current.Type.Equals(next.Type) && next.IsClosing)
-                            {
-                                valid = true;
-                            }
-                            else
-                            {
-                                valid = false;
-                            }
-                        }
-
-                        current = null;
-                        next = null;
-                    }
-
-                    if (valid)
-                    {
-                        Console.WriteLine("Correct formatting");
+                        Console.WriteLine("Incorrect formatting");
                     }
                     else
                     {
-                        Console.WriteLine("Incorrect formatting");
+                        Console.WriteLine("Correct formatting");
                     }
                 }
 			}
