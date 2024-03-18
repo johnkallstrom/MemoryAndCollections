@@ -201,6 +201,13 @@ namespace SkalProj_Datastrukturer_Minne
                         }
 						break;
                     case '1':
+                        Console.Write("Enter text: ");
+                        string? text = Console.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            string reversed = Util.ReverseText(text);
+                            Console.WriteLine(reversed);
+                        }
                         break;
 					case '0':
 						Environment.Exit(0);

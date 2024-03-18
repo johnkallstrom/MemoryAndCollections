@@ -27,5 +27,24 @@
 
 			return [operation.ToString(), value];
 		}
+
+		public static string ReverseText(string text)
+		{
+			var arr = text.ToCharArray();
+
+			var stack = new Stack<char>();
+			foreach (var letter in arr)
+			{
+				stack.Push(letter);
+			}
+
+			string res = "";
+			foreach (var letter in stack)
+			{
+				res += letter;
+			}
+
+			return res;
+		}
 	}
 }
