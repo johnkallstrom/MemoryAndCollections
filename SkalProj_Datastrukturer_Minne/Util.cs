@@ -2,9 +2,10 @@
 {
 	internal static class Util
 	{
+		public static void Clear() => Console.Clear();
+
 		public static void WriteMenu(string title, string[] options)
 		{
-			Console.Clear();
 			Console.WriteLine(title);
 
 			foreach (var option in options)

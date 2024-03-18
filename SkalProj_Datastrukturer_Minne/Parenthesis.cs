@@ -15,53 +15,7 @@
 
 		public override string ToString()
 		{
-            string result = string.Empty;
-
-            switch (Type)
-            {
-                case ParenthesisType.Bracket:
-                    if (Opening)
-                    {
-                        result = "(";
-                    }
-                    else
-                    {
-                        result = ")";
-                    }
-                    break;
-                case ParenthesisType.Square:
-                    if (Opening)
-                    {
-                        result = "[";
-                    }
-                    else
-                    {
-                        result = "]";
-                    }
-                    break;
-                case ParenthesisType.Curly:
-                    if (Opening)
-                    {
-                        result = "{";
-                    }
-                    else
-                    {
-                        result = "}";
-                    }
-                    break;
-                case ParenthesisType.Angle:
-                    if (Opening)
-                    {
-                        result = "<";
-                    }
-                    else
-                    {
-                        result = ">";
-                    }
-                    break;
-            }
-
-            return result;
+            return $"Type: {Type}, Opening: {Opening}, Symbol: {Symbol}";
 		}
 	}
 }
