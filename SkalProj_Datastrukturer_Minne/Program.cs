@@ -221,12 +221,59 @@ namespace SkalProj_Datastrukturer_Minne
 
         static void CheckParanthesis()
         {
-            /*
+			/*
              * Use this method to check if the paranthesis in a string is Correct or incorrect.
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
+			var parenthesis = new List<Parenthesis>
+			{
+				new Parenthesis(ParenthesisType.Bracket, opening: true, '('),
+				new Parenthesis(ParenthesisType.Bracket, opening: false, ')'),
+				new Parenthesis(ParenthesisType.Square, opening: true, '['),
+				new Parenthesis(ParenthesisType.Square, opening: false, ']'),
+				new Parenthesis(ParenthesisType.Curly, opening: true, '{'),
+				new Parenthesis(ParenthesisType.Curly, opening: false, '}'),
+				new Parenthesis(ParenthesisType.Angle, opening: true, '<'),
+				new Parenthesis(ParenthesisType.Angle, opening: false, '>'),
+			};
+
+			while (true)
+            {
+                Console.Write("Enter text: ");
+                string? text = Console.ReadLine();
+
+				var matches = new List<Parenthesis>();
+
+				if (!string.IsNullOrWhiteSpace(text))
+                {
+					parenthesis.ForEach(p =>
+                    {
+                        foreach (var letter in text)
+                        {
+                            if (letter.Equals(p.Symbol))
+                            {
+                                matches.Add(p);
+                            }
+                        }
+                    });
+				}
+
+                for (int i = 0; i <= matches.Count; i++)
+                {
+                    var current = matches[i];
+
+                    Parenthesis? next = null;
+                    if (i + 1 <= matches.Count)
+                    {
+						next = matches[i + 1];
+					}
+
+                    Console.WriteLine($"C: {current.Type}, {current.Symbol}, Opening: {current.Opening}");
+                    Console.WriteLine($"N: {next.Type}, {next.Symbol}, Opening: {next.Opening}");
+                }
+			}
         }
     }
 }
