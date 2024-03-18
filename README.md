@@ -73,5 +73,7 @@ När man vill ha ett bestämt antal element i sin kollektion/array/lista eller n
 
 ### Övning 3: ExamineStack()
 #### 1. Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det inte så smart att använda en stack i det här fallet?
+Därför att en stack följer FILO principen, först in sist ut, så om man skulle använda en stack i det här fallet så skulle den personen som är först in i kassan behöva vänta tills alla andra är klara innan den kan lämna och gå ut. 
+Vilket blir lite knasigt och ineffektivt.
 
 ### Övning 4: CheckParenthesis()
