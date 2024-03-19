@@ -70,10 +70,13 @@ Nej, det gör den inte.
 När man vill ha ett bestämt antal element i sin kollektion/array/lista eller när man bara vill ha bättre kontroll över kapaciteten, när den ska öka, med hur mycket m.m. 
 
 ### Övning 2: ExamineQueue()
+FIFO = First in, First Out
 
 ### Övning 3: ExamineStack()
+LIFO = Last in, First Out
+
 #### 1. Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det inte så smart att använda en stack i det här fallet?
-Därför att en stack följer FILO principen, först in sist ut, så om man skulle använda en stack i det här fallet så skulle den personen som är först in i kassan behöva vänta tills alla andra är klara innan den kan lämna och gå ut. 
+Därför att en stack följer LIFO principen (sist in, först ut), så om man skulle använda en stack i det här fallet så skulle den personen som är först in i kassan behöva vänta tills alla andra är klara innan den kan lämna och gå ut. 
 Vilket blir lite knasigt och ineffektivt.
 
 ### Övning 4: CheckParenthesis()
